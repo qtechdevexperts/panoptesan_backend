@@ -1,4 +1,4 @@
-# Backend - Take-home Remote Interview (React FileTree)
+# Backend - Panoptesan
 
 This is the backend API project for Panoptesan app.
 
