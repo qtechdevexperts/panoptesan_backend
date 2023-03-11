@@ -18,6 +18,8 @@
   "author": "Junaid",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "directory-tree": "^3.3.0",
     "dotenv": "^16.0.1",
