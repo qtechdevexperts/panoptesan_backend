@@ -35,10 +35,10 @@ class UserSession extends Model {
             tableName: table_names.userSession
         });
 
-        UserSession.hasOne(User, {
+        User.hasOne(UserSession, {
             foreignKey: 'user_id'
         });
-        User.belongsTo(UserSession);
+        UserSession.belongsTo(User);
     }
 }
 

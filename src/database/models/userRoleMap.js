@@ -30,6 +30,8 @@ class UserRoleMap extends Model {
             tableName: table_names.userRole
         });
 
+        UserRoleMap.removeAttribute('id');
+
         User.belongsToMany(Role, { through: table_names.userRole, timestamps: false });
         Role.belongsToMany(User, { through: table_names.userRole, timestamps: false });
     }

@@ -40,10 +40,10 @@ class Vehicle extends Model {
             tableName: table_names.vehicle
         });
 
-        Vehicle.hasOne(VehicleType, {
+        VehicleType.hasMany(Vehicle, {
             foreignKey: 'vehicle_type_slug'
         });
-        VehicleType.belongsTo(Vehicle);
+        Vehicle.belongsTo(VehicleType);
     }
 }
 

@@ -35,10 +35,10 @@ class Location extends Model {
             tableName: table_names.location
         });
 
-        Location.hasOne(User, {
+        User.hasOne(Location, {
             foreignKey: 'user_id'
         });
-        User.belongsTo(Location);
+        Location.belongsTo(User);
     }
 }
 

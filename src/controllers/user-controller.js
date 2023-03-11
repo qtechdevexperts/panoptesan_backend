@@ -1,16 +1,18 @@
 import UserService from "../services/user-service.js";
 import BaseController from "./base-controller.js";
+import { Exception } from "../helpers/exception.js";
 
 class UserController extends BaseController {
     constructor(userRole) {
         super();
+        console.log('UserController');
         this.UserService = new UserService(userRole);
     }
 
     authenticate = async (req, res, next) => {
         try {
-            let { username, password } = req;
-            let result = await this.UserService.authenticate(username, password);
+            let { email, username, password } = req.body;
+            let result = await this.UserService.authenticate(email, username, password);
 
             return res.success(
                 this.StatusCodes.SUCCESS, 
@@ -18,20 +20,13 @@ class UserController extends BaseController {
                 result
             );
         } catch (ex) {
-            return res.error(
-                new Exception(
-                    this.StatusCodes.SERVER_ERROR, 
-                    this.Messages.FAILURE, 
-                    ex
-                )
-            );
+            return res.error(ex);
         }
     }
 
     register = async (req, res, next) => {
         try {
-            let { username, password } = req;
-            let result = await this.UserService.register(username, password);
+            let result = await this.UserService.register(req.body);
 
             return res.success(
                 this.StatusCodes.SUCCESS, 
@@ -39,13 +34,7 @@ class UserController extends BaseController {
                 result
             );
         } catch (ex) {
-            return res.error(
-                new Exception(
-                    this.StatusCodes.SERVER_ERROR, 
-                    this.Messages.FAILURE, 
-                    ex
-                )
-            );
+            return res.error(ex);
         }
     }
 }

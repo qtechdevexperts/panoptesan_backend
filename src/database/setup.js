@@ -10,6 +10,7 @@ import FleetStation from "./models/fleetStation.js";
 import Location from "./models/location.js";
 import Role from "./models/role.js";
 import Subscription from "./models/subscription.js";
+import UserWord from "./models/user-word.js";
 import User from "./models/user.js";
 import UserRoleMap from "./models/userRoleMap.js";
 import UserSession from "./models/userSession.js";
@@ -61,11 +62,27 @@ function initTables() {
     UserRoleMap.initialize(sequelize);
     UserSession.initialize(sequelize);
     UserSubscriptionMap.initialize(sequelize);
+    UserWord.initialize(sequelize);
     VideoClip.initialize(sequelize);
     ///////////////////////////////////
 }
 
+async function transaction() {
+    return await sequelize.transaction();
+}
+
+async function commit(transaction) {
+    await transaction.commit();
+}
+
+async function rollback(transaction) {
+    await transaction.rollback();
+}
+
 export default {
     connectAsync,
-    initTables
+    initTables,
+    transaction,
+    commit,
+    rollback
 }

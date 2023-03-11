@@ -37,25 +37,25 @@ class FleetDetails extends Model {
             tableName: table_names.fleetDetails
         });
 
-        FleetDetails.hasOne(Fleet, {
+        Fleet.hasOne(FleetDetails, {
             foreignKey: 'fleet_id'
         });
-        Fleet.belongsTo(FleetDetails);
+        FleetDetails.belongsTo(Fleet);
 
-        FleetDetails.hasOne(Vehicle, {
+        Vehicle.hasOne(FleetDetails, {
             foreignKey: 'vehicle_id'
         });
-        Vehicle.belongsTo(FleetDetails);
+        FleetDetails.belongsTo(Vehicle);
 
-        FleetDetails.hasOne(User, {
+        User.hasMany(FleetDetails, {
             foreignKey: 'driver_id'
         });
-        User.belongsTo(FleetDetails);
+        FleetDetails.belongsTo(User);
 
-        FleetDetails.hasOne(FleetManagementDetails, {
+        FleetManagementDetails.hasOne(FleetDetails, {
             foreignKey: 'fleet_management_details_id'
         });
-        FleetManagementDetails.belongsTo(FleetDetails);
+        FleetDetails.belongsTo(FleetManagementDetails);
     }
 }
 

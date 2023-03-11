@@ -10,6 +10,7 @@ export default {
     role: "role",
     subscription: "subscription",
     user: "user",
+    userWord: "user-word",
     userSession: "user-session",
     userRole: "user_role",
     userSubscription: "user_subscription",

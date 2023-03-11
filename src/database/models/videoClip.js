@@ -40,10 +40,10 @@ class VideoClip extends Model {
             tableName: table_names.videoClip
         });
 
-        VideoClip.hasOne(User, {
+        User.hasOne(VideoClip, {
             foreignKey: 'user_id'
         });
-        User.belongsTo(VideoClip);
+        VideoClip.belongsTo(User);
     }
 }
 

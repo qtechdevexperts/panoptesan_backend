@@ -35,10 +35,10 @@ class City extends Model {
             tableName: table_names.city
         });
 
-        City.hasOne(Country, {
+        Country.hasOne(City, {
             foreignKey: 'country_id'
         });
-        Country.belongsTo(City);
+        City.belongsTo(Country);
     }
 }
 
